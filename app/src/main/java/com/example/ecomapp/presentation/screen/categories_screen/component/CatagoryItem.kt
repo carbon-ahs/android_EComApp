@@ -1,9 +1,7 @@
-package com.waltonbd.randomapi.presentation.categories_screen.component
+package com.example.ecomapp.presentation.screen.categories_screen.component
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,6 +17,7 @@ import androidx.compose.ui.unit.dp
 /**
  * Created by Ahsan Habib on 5/28/2024.
  */
+
 @Composable
 fun CategoryItem(
     modifier: Modifier = Modifier,

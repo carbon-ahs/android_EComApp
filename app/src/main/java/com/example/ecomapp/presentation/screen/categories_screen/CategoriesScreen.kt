@@ -20,12 +20,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.waltonbd.randomapi.presentation.categories_screen.component.CategoryItem
-
+import com.example.ecomapp.presentation.screen.categories_screen.component.CategoryItem
 
 /**
  * Created by Ahsan Habib on 5/28/2024.
  */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoriesScreen(

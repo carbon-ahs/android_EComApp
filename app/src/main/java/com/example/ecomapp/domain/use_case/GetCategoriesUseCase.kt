@@ -1,6 +1,5 @@
 package com.example.ecomapp.domain.use_case
 
-import android.util.Log
 import com.example.ecomapp.core.Resource
 import com.example.ecomapp.domain.model.Category
 import com.example.ecomapp.domain.repository.EComSiteRepository

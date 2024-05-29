@@ -4,10 +4,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ecomapp.core.Resource
 import com.example.ecomapp.data.local.entity.Product
 import com.example.ecomapp.domain.use_case.CartItemUseCases
-import com.example.ecomapp.presentation.screen.categories_screen.CategoriesState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -21,6 +19,7 @@ import javax.inject.Inject
 /**
  * Created by Ahsan Habib on 5/29/2024.
  */
+
 @HiltViewModel
 class CartViewModel @Inject constructor(
     private val cartItemUseCases: CartItemUseCases

@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.ecomapp.data.local.entity.Product
@@ -30,17 +31,19 @@ import com.example.ecomapp.data.local.entity.Product
 /**
  * Created by Ahsan Habib on 5/29/2024.
  */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductsScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
     viewModel: ProductsViewModel = hiltViewModel(),
-    categoryName: String = "dlft",
-    categoryId: String = "-1"
+    categoryName: String = "",
+    categoryId: String = "-1",
 ) {
     val state = viewModel.state.value
     Scaffold(
+        modifier = modifier,
         topBar = { TopAppBar(title = { Text(text = "Products") }) },
         floatingActionButton = {
             FloatingActionButton(onClick = { navController.navigate("categories_screen") }) {
@@ -55,7 +58,11 @@ fun ProductsScreen(
                 .padding(16.dp)
         ) {
             if (categoryId == "-1") {
-                Text(text = "Pls select category to view products.")
+                Text(
+                    text = "Pls select category to view products.",
+                    modifier = Modifier.align(alignment = Alignment.Center),
+                    fontSize = 20.sp
+                )
             } else {
                 if (state.isLoading) {
                     CircularProgressIndicator(
@@ -77,7 +84,15 @@ fun ProductsScreen(
                                 ProductItem(
                                     productName = product.name,
                                     categoryName = categoryName,
-                                    onAddClick = {viewModel.onAddClick(Product(id = product.id, name = product.name, categoryName = categoryName))}
+                                    onAddClick = {
+                                        viewModel.onAddClick(
+                                            Product(
+                                                id = product.id,
+                                                name = product.name,
+                                                categoryName = categoryName
+                                            )
+                                        )
+                                    }
                                 )
                                 Spacer(modifier = Modifier.height(8.dp))
                             }

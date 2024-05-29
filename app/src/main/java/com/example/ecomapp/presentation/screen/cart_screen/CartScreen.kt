@@ -1,5 +1,7 @@
 package com.example.ecomapp.presentation.screen.cart_screen
 
+
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,11 +15,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.ecomapp.data.local.entity.Product
 import com.example.ecomapp.presentation.screen.cart_screen.component.CartItem
 
 
@@ -33,16 +38,17 @@ fun CartScreen(
     navController: NavHostController,
 ) {
 
-//    val productList by viewModel.productList.collectAsStateWithLifecycle()
-//    Log.d("TAG", "CartScreen: "+productList.toString())
-    val state = viewModel.state.value
-
+    val products = viewModel.state.value.cartItemList
     Scaffold(
+        modifier = modifier,
         topBar = { TopAppBar(title = { Text(text = "Cart") }) }
     ) { innerPadding ->
 
         Column(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(16.dp)
+                .fillMaxSize()
         ) {
             Text(
                 text = "Products from cart.",
@@ -50,15 +56,30 @@ fun CartScreen(
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(16.dp))
-            LazyColumn(
-                modifier = Modifier.fillMaxSize()
-            ) {
-                items(state.cartItem) {product ->
-                    CartItem(
-                        product = product,
-                        onDeleteClick = { viewModel.onDeleteClick(product) }
+            if (products == emptyList<Product>()) {
+                Box(
+                    modifier = Modifier.fillMaxSize()
+
+                ) {
+                    Text(
+                        text = "There is no item in cart!!!",
+                        modifier = Modifier.align(alignment = Alignment.Center),
+                        fontSize = 20.sp
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+
+                }
+            } else {
+
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(products) { product ->
+                        CartItem(
+                            product = product,
+                            onDeleteClick = { viewModel.onDeleteClick(product) }
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
                 }
             }
         }

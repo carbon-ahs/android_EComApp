@@ -1,7 +1,6 @@
 package com.example.ecomapp.data.repository
 
 import com.example.ecomapp.data.local.LocalDatabase
-import com.example.ecomapp.data.local.dao.ProductDao
 import com.example.ecomapp.data.local.entity.Product
 import com.example.ecomapp.data.remote.api.EComSiteApi
 import com.example.ecomapp.data.remote.dto.toCategoryList
@@ -20,8 +19,8 @@ class EComSiteRepositoryImpl @Inject constructor(
     private val db: LocalDatabase
 ) : EComSiteRepository {
     override suspend fun getCategories(): List<Category> {
-        var apiObj = api.getCategories()
-        var categoryList = apiObj.toCategoryList()
+        val apiObj = api.getCategories()
+        val categoryList = apiObj.toCategoryList()
         return categoryList
     }
 

@@ -1,7 +1,5 @@
 package com.example.ecomapp.presentation.screen
 
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +20,7 @@ import androidx.navigation.NavHostController
 /**
  * Created by Ahsan Habib on 5/28/2024.
  */
+
 @Composable
 fun LandingScreen(
     modifier: Modifier = Modifier,
@@ -38,29 +37,17 @@ fun LandingScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Log.d("TAG", "LandingScreen: "+ navController.graph.nodes)
+
             Button(onClick = { navController.navigate("product_screen") }) {
                 Text(text = "Products")
             }
-            Button(onClick = { navController.navigate("categories_screen") }) {
-                Text(text = "Category")
-            }
-            Button(
-                onClick = {
-                    var categoryId: String = "OO"
-                    navController.navigate("product_screen/$categoryId")
-                }
-            ) {
-                Text(text = "Products with param")
-            }
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Button(onClick = {
                 navController.navigate("cart_screen")
 //                Toast.makeText(context, "No Product in Cart.", Toast.LENGTH_LONG).show()
             }) {
                 Text(text = "Cart")
             }
-
         }
 
     }

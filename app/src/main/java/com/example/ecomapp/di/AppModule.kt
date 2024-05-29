@@ -3,7 +3,6 @@ package com.example.ecomapp.di
 import android.app.Application
 import androidx.room.Room
 import com.example.ecomapp.data.local.LocalDatabase
-import com.example.ecomapp.data.local.dao.ProductDao
 import com.example.ecomapp.data.remote.api.EComSiteApi
 import com.example.ecomapp.data.repository.EComSiteRepositoryImpl
 import com.example.ecomapp.domain.repository.EComSiteRepository

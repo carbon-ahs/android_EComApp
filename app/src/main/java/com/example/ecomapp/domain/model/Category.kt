@@ -1,6 +1,5 @@
 package com.example.ecomapp.domain.model
 
-import com.google.gson.annotations.SerializedName
 
 
 /**
